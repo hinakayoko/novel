@@ -1,0 +1,543 @@
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+.readDetailCon{ padding-top:30px;height: auto;margin: 0;padding: 0;}
+.readDetail{ background:#b5b5b5;_height:100%;}
+.centerIn{ width:1062px; margin:0 auto; position:relative;}
+.DtailNav{ padding-bottom: 40px;}
+.DtailNav li{ float:left; width:100px; text-align:center; line-height:35px; }
+.DtailNav li a{background:#e9e9e9; margin-left:5px;border-top-left-radius:5px;border-top-right-radius:5px; display:block;}
+.DtailNav li a:hover,.DtailNav .secHover a{ background:#f4f4f4}
+.readDetailbody{ background:#f6f4ec;}
+
+.leftNav{  position:fixed;right:50%;margin-right: 528px;z-index: 100;}
+.leftNav ul li{  text-align:center; font-size:14px; margin-bottom:5px;box-shadow: 0px 0px 10px #ccc;}
+.leftNav ul li a{border-radius:5px; display:block;width:60px; height: 60px; background:#f6f4ec; }
+.leftNav ul li a b{font-weight: bold;font-size: 12px;text-align: center;display: block;color: #666;}
+.leftNav ul li a img{margin: 6px 0;}
+/*.leftNav ul li a:hover,.leftNav .secHover a{ background:#f6f4ec; padding-left:2px; font-weight:bold;}*/
+.readDetailbody{ position:absolute;box-shadow: 0px 0px 10px #ccc;border-bottom-left-radius:10px;border-bottom-right-radius:10px;padding-bottom: 50px;width: 1062px;overflow: hidden;}
+
+.xsDetail{ font-size:14px; line-height:24px; margin:30px 50px;}
+.xsDetail p{ padding-bottom:20px;text-indent:2em;}
+
+.story_title {
+    border-bottom: 1px solid #e3e1d9;
+    margin: 0 auto;
+    padding: 0 0 10px 10px;
+    position: relative;
+    width: 88%;
+}
+.story_title h1 {
+    color: #000;
+    font: 26px/1 "Microsoft YaHei";
+    margin-bottom: 15px;
+    padding-top: 24px;
+}
+.side{position:fixed;width:54px;height:275px; left:50%; bottom:50px;z-index:100; margin-left:528px;}
+.side{  position:fixed;right:50%;margin-right: 498px;z-index: 100;}
+.side ul li{  text-align:center; font-size:14px; margin-bottom:5px;box-shadow: 0px 0px 10px #ccc;}
+.side ul li a{border-radius:5px; display:block;width:60px; height: 60px; background:#f6f4ec; }
+.side ul li a b{font-weight: bold;font-size: 12px;text-align: center;display: block;color: #666;}
+.side ul li a img{margin: 6px 0;}
+
+.pressBtn {
+    display: block;
+    height: 116px;
+    margin: 0 auto;
+    position: relative;
+    transition: all 0.5s ease 0s;
+    width: 116px;
+    text-align: center;
+    line-height: 116px;
+    border-radius: 50%;
+    background: #D43A1F;
+    text-align: center;
+    font-size: 42px;
+    color: #fff;
+}
+
+.pressBtn:hover{
+    color: #fff;
+}
+.praise {
+    margin: 40px auto 24px;
+    position: relative;
+    width: 100%;
+}
+.pressBtn em, .pressBtn span, .pressBtn i {
+    position: absolute;
+    transition: all 0.5s ease 0s;
+}
+.pressBtn em {
+    animation: 1.5s ease 2s normal both infinite running pulse;
+    background: url("/xin/images/content/shang.png") no-repeat scroll 0 0;
+    height: 60px;
+    left: 32px;
+    top: 24px;
+    width: 65px;
+}
+.pressBtn span {
+    bottom: 16px;
+    color: #fff;
+    display: block;
+    font: 14px/1.8 Arial;
+    text-align: center;
+    width: 100%;
+}
+.pressBtn em {
+    top: 22px;
+}
+.nextPageBox {
+    margin-bottom: 78px;
+}
+.nextPageBox a.preva, .nextPageBox a.dir {
+    margin-right: 30px;
+}
+.nextPageBox a.nexta {
+    background: #D43A1F;
+    color: #fff;
+}
+.nextPageBox a {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px #ccc;
+    display: inline-block;
+    font: 16px/42px "Microsoft YaHei";
+    height: 42px;
+    text-align: center;
+    color: #D43A1F;
+    width: 158px;
+}
+.fenxiang{padding: 0 10px;}
+/*.side ul li{width:54px;height:54px;float:left;position:relative;margin-bottom: 10px;}
+.side ul li .sidebox{width:60px;height:60px;background:#f6f4ec;font:14px/54px "微软雅黑";box-shadow: 0px 0px 10px #ccc;}
+.side ul li .sidebox b{font-weight: bold;font-size: 12px;color: #666;text-align: center;}
+.side ul li .sidebox img{margin-left: 15px;}
+.side ul li .sidetop{width:54px;height:54px;line-height:54px;display:inline-block;background:#000;opacity:0.5;filter:Alpha(opacity=50);transition:all 0.3s;}*/
+.yd_yuedu_btn{margin-top: 20px;padding: 20px;}
+
+.yd_yuedu_btn .yyb_left .rc_lst li {
+    float: left;
+    padding-right: 15px;
+    text-align: center;
+    width: 140px;
+}
+
+
+.yd_yuedu_btn .yyb_left .rc_im {
+    border: 2px solid #d6d8d9;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+    height: 174px;
+    margin-bottom: 10px;
+}
+
+.yyb_left .wenziLi {
+    margin: 10px 0 0;
+    width: 967px;
+    padding: 10px 0 20px 20px;
+}
+
+
+.clearfix::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.yyb_left .wenziLi {
+    margin: 10px 0 0;
+    padding: 10px 0 20px 20px;
+    width: 967px;
+}
+.yyb_left .wenziLi {
+    margin: 10px 0 0;
+    width: 960px;
+}
+.limitVipWrap h3 {
+    color: #a1897f;
+    font: 18px/1 "Microsoft YaHei";
+    margin-bottom: 45px;
+    text-align: center;
+}
+.limitVipWrap, .officialBox, .qrRecWrap, .writer {
+    background-color: #fffdf5;
+}
+.limitVipWrap {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e5e4db;
+    margin: 0 auto;
+    padding: 42px 0 60px;
+    width: 90%;
+}
+.SubscribeBtnBox {
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    width: 316px;
+}
+.SubscribeBtnBox a.all {
+    background: #ececec none repeat scroll 0 0;
+    border:1px solid #d4d4d4;
+    box-shadow: 0 1px 2px #999;
+    color: #fff;
+    height: 50px;
+    left: 12px;
+    width: 120px;
+}
+.SubscribeBtnBox a.single {
+    background: #ececec none repeat scroll 0 0;
+    box-shadow: 0 1px 2px #999;
+    border:1px solid #d4d4d4;
+    color: #fff;
+    height: 50px;
+    right: 12px;
+    width: 120px;
+}
+.SubscribeBtnBox a {
+    border-radius: 4px;
+    font: 14px/1.2 "Microsoft YaHei";
+    height: 40px;
+    padding-top: 8px;
+    position: absolute;
+    width: 118px;
+}
+
+.SubscribeBtnBox a span {
+    cursor: pointer;
+    display: block;
+    color: #535353;
+}
+.SubscribeBtnBox a em {
+    cursor: pointer;
+    display: block;
+    color: #848484;
+}
+
+.SubscribeBtnBox a.ALL {
+    background: #ececec none repeat scroll 0 0;
+    border: 1px solid #d4d4d4;
+    box-shadow: 0 1px 1px #ddd;
+    overflow: hidden;
+    right: 180px;
+    text-align: right;
+}
+
+.dyAll {
+    position: absolute;
+    right: 10px;
+    text-align: center;
+}
+
+.limitVipWrap .checkBoxP {
+    position: absolute;
+    top: 87px;
+    line-height: 30px;
+}
+.checkBoxP {
+    left: 16px;
+}
+
+.checkBox {
+    margin: -2px 5px 1px 0;
+    vertical-align: middle;
+}
+
+.noLoginTip {
+    font-size: 14px;
+    padding-top: 170px;
+    text-align: center;
+}
+
+.redFont {
+    color: #cc2931;
+    text-decoration: underline;
+}
+.nomoney{
+	position: relative;
+	background: #fff none repeat scroll 0 0;
+    box-shadow: 0 1px 2px #999;
+    width: 378px;
+    border-radius: 5px;
+    /*height: 210px;*/
+    text-align: center;
+}
+.closed{
+	font-family: '微软雅黑';
+	position: absolute;
+	right: 10px;
+	top:5px;
+	font-size: 18px;
+	color: #d0d0d0;
+}
+.subbutton{
+    padding-bottom: 10px;
+}
+.subbutton a.sub {
+    background: #aa2746;
+    color: #fff;
+}
+.subbutton a {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #cac8c0;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px #ccc;
+    display: inline-block;
+    font: 16px/42px "Microsoft YaHei";
+    height: 42px;
+    text-align: center;
+    color: #aa2746;
+    width: 158px;
+}
+.nomoney h4{
+	font-size: 18px;
+	height: 120px;
+	line-height: 120px;
+	/*padding: 20px 0;*/
+	color: #aa2746
+}
+.nomoney h3{
+    font-size: 18px;
+    
+    text-align: left;
+    padding: 10px 10px;
+    /*padding: 20px 0;*/
+    color: #333;
+}
+.zuixin .z_Zone_bodyLeftTop{
+    border:none;
+    margin-left: 12px;
+    margin-top: 0;
+}
+.subbutton a.sub1 {
+    background: #D43A1F;
+    color: #fff;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 20px;
+}
+.subbutton a.unsub {
+    background: #f8f8f8;
+    color: #94908a;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+}
+.nomoney p.last span{
+display: block;   
+    padding-top: 6px;
+    font-size: 14px;
+    color: #94908a;
+}
+.nomoney p.last{
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    color: #94908a;
+}
+.setting{
+    width: 470px;
+    text-align: left;
+}
+.setupList {
+    padding: 10px;
+    color: #333;
+}
+.setupList li {
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+.readTheme .defaultBg {
+    background-color: #f6f4ec;
+    margin-left: 15px;
+}
+.setupList li a {
+    display: inline-block;
+    margin: -2px 8px 0;
+    text-align: center;
+    vertical-align: middle;
+}
+.readTheme a {
+    border-radius: 50%;
+    box-shadow: 0 2px 1px #bbb;
+    height: 30px;
+    position: relative;
+    width: 30px;
+}
+
+.readTheme .act em {
+    display: block;
+}
+.readTheme a em {
+    background: rgba(0, 0, 0, 0) url("/style/images/readnew/act.png") no-repeat scroll 0 0;
+    display: none;
+    height: 7px;
+    left: 11px;
+    position: absolute;
+    top: 11px;
+    width: 9px;
+}
+.readTheme .green {
+    background-color: #dbeed9;
+}
+
+.readTheme .blue {
+    background-color: #e8fdfe;
+}
+
+.readTheme .white {
+    background-color: #f6f6f6;
+}
+
+.readTheme .gray {
+    background-color: #ded6d6;
+}
+
+.readTheme .pink {
+    background-color: #fdd9d9;
+}
+
+.readTheme .night {
+    background-color: #666;
+}
+.setBtn .act {
+    color: #cc2931;
+}
+.readTheme a span {
+    background: rgba(0, 0, 0, 0) url("/style/images/readnew/graytip.png") no-repeat scroll 0 0;
+    color: #999;
+    display: none;
+    font: 12px/20px "Microsoft YaHei";
+    height: 26px;
+    left: -11.5px;
+    position: absolute;
+    text-align: center;
+    top: -32px;
+    width: 53px;
+}
+.setBtn a {
+    /*border: 1px solid #d9d9d9;*/
+    border-radius: 5px;
+    box-shadow: 0 1px 1px #ececec;
+    height: 28px;
+    line-height: 28px;
+    width: 53px;
+}
+.setFont .setSimsun {
+    font-family: Simsun;
+    font-size: 13px;
+    text-indent: 2px;
+}
+
+.setFont .setKs {
+    font-family: kaiti;
+}
+.nomoney .active{
+    color: #aa2746;
+}
+
+.cf::before, .cf::after {
+    content: "";
+    display: table;
+}
+.cf::after {
+    clear: both;
+}
+.cf::before, .cf::after {
+    content: "";
+    display: table;
+}
+.ticketList {
+    padding: 10px 0 0 30px;
+}
+.ticketList li {
+    cursor: pointer;
+    float: left;
+    margin: 0 56px 0 0;
+    padding-bottom: 25px;
+    text-align: center;
+}
+.ticketList p{
+    color: #333;
+    font-size: 12px;
+}
+.monthTicketList .mTbox.t1.act {
+    background: rgba(0, 0, 0, 0) url("/xin/images/content/ontic.png") no-repeat scroll 0 0;
+}
+.monthTicketList .mTbox.t1 {
+    background: rgba(0, 0, 0, 0) url("/xin/images/content/tic.png") no-repeat scroll 0 0;
+}
+.ticketList li .mTbox {
+    height: 45px;
+    margin-bottom: 5px;
+    position: relative;
+    width: 79px;
+}
+.mTbox.t1 cite {
+    /*background: rgba(0, 0, 0, 0) url("/style/images/readnew/readpageico.png") no-repeat scroll 0 -142px;*/
+    height: 24px;
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    text-align: center;
+    width: 69px;
+    font-size: 14px;
+    color: #6a6a6a;
+    font-family: "微软雅黑"
+}
+.mTbox.act cite {
+    /*background: rgba(0, 0, 0, 0) url("/style/images/readnew/readpageico.png") no-repeat scroll 0 -142px;*/
+    height: 24px;
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    text-align: center;
+    width: 69px;
+    font-size: 14px;
+    color: #aa2746;
+    font-family: "微软雅黑"
+}
+.textInput{ background:#e9e9e9; padding:30px 50px; overflow: hidden;position:relative;border-bottom-left-radius:10px;border-bottom-right-radius:10px;}
+.textInput textarea{ height:60px; width:700px; padding:5px; display:block; float:left; border:#CCC solid 1px;}
+.textInput span{ display:block; float:left; width:100px;color: #676767;}
+.textInput div{ padding-bottom:10px; overflow:hidden;}
+.textInput input{ display:block; float:left; border:#CCC solid 1px; line-height:25px; height:25px; padding:0 5px; width:600px;}
+.textInput .btn2{ background:#ff3498; color:#FFF; width:100px; text-align:center; height:27px; border:none;}
+
+.dsPage{ border-radius:10px; width:650px; background:#FFF;margin-top:-100px;}
+.dsPage h1{ background:#d3d3d3;border-top-left-radius:10px;border-top-right-radius:10px; line-height:45px; padding: 0 20px; font-size:14px; overflow:hidden;}
+.dsPage h2{ font-size:24px; text-align:center; margin:0 20px 20px 20px; border-bottom:#999 dotted 1px; clear:both; padding-bottom:10px; color:#ff3498;}
+.dsPage h3{ margin:0 20px; padding-bottom:10px; font-size:14px;}
+.dsPage h3 b{ color:#ff3498}
+
+.tabBtn{ overflow:hidden; display:block; padding:20px;}
+.tabBtn span{ display:block; width:50%; float:left; text-align:center; background:#E7E7E7; line-height:35px;}
+.tabBtn span a{ display:block; border-bottom:#999 solid 2px;}
+.tabBtn span a:hover,.tabBtn span .hov{ background:#ff3498; color:#FFF; border-bottom:#C06 solid 2px;}
+
+.sbList{ margin:0 20px; overflow:hidden; padding-bottom:10px; border-bottom:#999 dotted 1px; margin-bottom:15px;}
+.sbList span{ float:left; width:150px; display:block; line-height:24px;}
+.textIn{ margin: 0 20px; line-height:24px; border-bottom:#999 dotted 1px; padding-bottom:15px; margin-bottom:15px;}
+.textIn textarea{ width:98%; border:#CCC solid 1px; padding:5px; height:60px; color:#999;}
+.dsTirps{ margin: 0 20px; padding-bottom:30px; color:#999;} 
+.subBtn a{ display:block;  background:#ff3498; color:#FFF; margin:0 20px; line-height:40px; text-align:center;}
+.listTable{ margin: 20px; overflow:hidden;}
+.listTable th{ background:#E7E7E7; border-bottom:#999 solid 1px; line-height:40px; padding:0 10px;}
+.listTable td{  border-bottom:#CCC solid 1px; line-height:35px; padding:0 10px;}
+.listTable tr:hover{ background:#FFE3F1;}
+.bottomBtn{ line-height:35px; background:#FFE3F1; padding:0 20px;}
+.bottomBtn span a{ background:#ff3498; color:#FFF; line-height:24px; padding:5px 10px;}
+.article .hidmsg{display: none;}
+.article span{display: none;}
+.article font{display: none;}
+.article i{display: none;}
+.article label{display: none;}
+.article abbr{display: none;}

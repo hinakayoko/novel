@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserinfoMapper">
+    <sql id="Where_Clause">
+        <where>
+            <if test="id!=null and id!=0">
+                and id= #{id}
+            </if>
+            <if test="tel!=null and tel!=''">
+                and tel=#{tel}
+            </if>
+            <if test="pwd!=null and pwd!=''">
+                and pwd=#{pwd}
+            </if>
+            <if test="nickname!=null and nickname!=''">
+                and nickname  like concat('%',#{nickname},'%')
+            </if>
+        </where>
+    </sql>
+    <select id="query" parameterType="java.util.Map" resultType="Userinfo">
+        select * from userinfo
+        <include refid="Where_Clause"/>
+        <if test="page">
+            limit #{offset} ,#{pageSize}
+        </if>
+    </select>
+    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+        select count(0) from userinfo
+        <include refid="Where_Clause"/>
+    </select>
+    <select id="queryUserinfoById" parameterType="int" resultType="Userinfo">
+		select * from userinfo where id=${value}
+	</select>
+    <insert id="insertUserinfo" useGeneratedKeys="true" keyProperty="id" parameterType="Userinfo">
+		insert into userinfo
+		(tel,pwd,nickname,birthday,sex,headurl)
+		values
+		(#{tel},#{pwd},#{nickname},#{birthday},#{sex},#{headurl});
+	</insert>
+    <update id="updateUserinfo" parameterType="Userinfo">
+		update userinfo set
+		tel=#{tel},pwd=#{pwd},nickname=#{nickname},birthday=#{birthday},sex=#{sex},headurl=#{headurl}
+		where
+		id=#{id}	
+	</update>
+    <delete id="deleteUserinfo" parameterType="int">
+	    delete from  userinfo where id=${value}
+	</delete>
+</mapper>
+ 

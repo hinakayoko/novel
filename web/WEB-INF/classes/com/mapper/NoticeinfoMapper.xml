@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.NoticeinfoMapper">
+    <sql id="Where_Clause">
+        <where>
+            <if test="id!=null and id!=0">
+                and id= #{id}
+            </if>
+            <if test="title!=null and title!=''">
+                and title=#{title}
+            </if>
+        </where>
+    </sql>
+    <select id="query" parameterType="java.util.Map" resultType="Noticeinfo">
+        select * from noticeinfo
+        <include refid="Where_Clause"/>
+
+        <if test="page">
+            limit #{offset} ,#{pageSize}
+        </if>
+    </select>
+    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+        select count(0) from noticeinfo
+        <include refid="Where_Clause"/>
+    </select>
+    <select id="queryNoticeinfoById" parameterType="int" resultType="Noticeinfo">
+		select * from noticeinfo where id=${value}
+	</select>
+    <insert id="insertNoticeinfo" useGeneratedKeys="true" keyProperty="id" parameterType="Noticeinfo">
+		insert into noticeinfo
+		(title,tcontents,updatetime)
+		values
+		(#{title},#{tcontents},#{updatetime});
+	</insert>
+    <update id="updateNoticeinfo" parameterType="Noticeinfo">
+		update noticeinfo set
+		title=#{title},tcontents=#{tcontents},updatetime=#{updatetime}
+		where
+		id=#{id}	
+	</update>
+    <delete id="deleteNoticeinfo" parameterType="int">
+	    delete from  noticeinfo where id=${value}
+	</delete>
+</mapper>
+ 

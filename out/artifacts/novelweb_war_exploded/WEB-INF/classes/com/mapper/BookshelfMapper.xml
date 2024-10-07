@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.BookshelfMapper">
+    <resultMap type="Bookshelf" id="queryMap">
+        <id property="id" column="id"/>
+        <result property="novelid" column="novelid"/>
+        <result property="userid" column="userid"/>
+        <association property="novelinfoVO" javaType="Novelinfo">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="categoryid" column="categoryid"/>
+            <result property="author" column="author"/>
+            <result property="noveldesc" column="noveldesc"/>
+            <result property="updatetime" column="updatetime"/>
+            <result property="wordsnum" column="wordsnum"/>
+            <result property="viewcount" column="viewcount"/>
+            <result property="progress" column="progress"/>
+            <result property="favcount" column="favcount"/>
+            <result property="novelcover" column="novelcover"/>
+        </association>
+        <association property="userinfoVO" javaType="Userinfo">
+            <id property="id" column="id"/>
+            <result property="tel" column="tel"/>
+            <result property="pwd" column="pwd"/>
+            <result property="nickname" column="nickname"/>
+            <result property="birthday" column="birthday"/>
+            <result property="sex" column="sex"/>
+            <result property="headurl" column="headurl"/>
+        </association>
+        <association property="novelcategoryVO" javaType="Novelcategory">
+            <id property="id" column="id"/>
+            <result property="name" column="b_name"/>
+        </association>
+    </resultMap>
+    <sql id="Where_Clause">
+        <where>
+            <if test="id!=null and id!=0">
+                and a.id= #{id}
+            </if>
+            <if test="novelid!=null and novelid!=0">
+                and a.novelid= #{novelid}
+            </if>
+            <if test="userid!=null and userid!=0">
+                and a.userid= #{userid}
+            </if>
+
+            <if test="progress!=null and progress!=0">
+                and b.progress= #{progress}
+            </if>
+
+        </where>
+    </sql>
+    <select id="query" parameterType="java.util.Map" resultMap="queryMap">
+        select a.*,b.name,b.categoryid,b.author,b.noveldesc,b.updatetime,b.wordsnum,b.viewcount,b.progress,b.favcount,b.novelcover,c.tel,c.pwd,c.nickname,c.birthday,c.sex,c.headurl,d.name b_name from bookshelf a
+        left join novelinfo b on a.novelid=b.id left join userinfo c on a.userid=c.id left join novelcategory d on b.categoryid=d.id
+        <include refid="Where_Clause"/>
+        <if test="page">
+            limit #{offset} ,#{pageSize}
+        </if>
+    </select>
+    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+        select count(*) nums from bookshelf a left join novelinfo b on a.novelid=b.id left join userinfo c on
+        a.userid=c.id  left join novelcategory d on b.categoryid=d.id
+        <include refid="Where_Clause"/>
+    </select>
+    <select id="queryBookshelfById" parameterType="int" resultType="Bookshelf">
+		select * from bookshelf where id=${value}
+	</select>
+    <insert id="insertBookshelf" useGeneratedKeys="true" keyProperty="id" parameterType="Bookshelf">
+		insert into bookshelf
+		(novelid,userid)
+		values
+		(#{novelid},#{userid});
+	</insert>
+    <update id="updateBookshelf" parameterType="Bookshelf">
+		update bookshelf set
+		novelid=#{novelid},userid=#{userid}
+		where
+		id=#{id}	
+	</update>
+    <delete id="deleteBookshelf" parameterType="int">
+	    delete from  bookshelf where id=${value}
+	</delete>
+</mapper>
+ 

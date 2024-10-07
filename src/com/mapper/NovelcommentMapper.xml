@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.NovelcommentMapper">
+    <resultMap type="Novelcomment" id="queryMap">
+        <id property="id" column="id"/>
+        <result property="novelid" column="novelid"/>
+        <result property="userid" column="userid"/>
+        <result property="contents" column="contents"/>
+        <result property="commenttime" column="commenttime"/>
+        <association property="novelinfoVO" javaType="Novelinfo">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="categoryid" column="categoryid"/>
+            <result property="author" column="author"/>
+            <result property="noveldesc" column="noveldesc"/>
+            <result property="updatetime" column="updatetime"/>
+            <result property="wordsnum" column="wordsnum"/>
+            <result property="viewcount" column="viewcount"/>
+            <result property="progress" column="progress"/>
+            <result property="favcount" column="favcount"/>
+            <result property="novelcover" column="novelcover"/>
+        </association>
+        <association property="userinfoVO" javaType="Userinfo">
+            <id property="id" column="id"/>
+            <result property="tel" column="tel"/>
+            <result property="pwd" column="pwd"/>
+            <result property="nickname" column="nickname"/>
+            <result property="birthday" column="birthday"/>
+            <result property="sex" column="sex"/>
+            <result property="headurl" column="headurl"/>
+        </association>
+    </resultMap>
+    <sql id="Where_Clause">
+        <where>
+            <if test="id!=null and id!=0">
+                and a.id= #{id}
+            </if>
+            <if test="novelid!=null and novelid!=0">
+                and a.novelid= #{novelid}
+            </if>
+            <if test="userid!=null and userid!=0">
+                and a.userid= #{userid}
+            </if>
+            <if test="commenttimeStart!=null and commenttimeStart!=''">
+                and a.commenttime&gt;=#{commenttimeStart}
+            </if>
+            <if test="commenttimeEnd!=null and commenttimeEnd!=''">
+                and a.commenttime&lt;=#{commenttimeEnd}
+            </if>
+
+            <if test="name!=null and name!=''">
+                and b.name like concat('%',#{name},'%')
+            </if>
+
+
+        </where>
+    </sql>
+    <select id="query" parameterType="java.util.Map" resultMap="queryMap">
+        select
+        a.*,b.name,b.categoryid,b.author,b.noveldesc,b.updatetime,b.wordsnum,b.viewcount,b.progress,b.favcount,b.novelcover,c.tel,c.pwd,c.nickname,c.birthday,c.sex,c.headurl
+        from novelcomment a left join novelinfo b on a.novelid=b.id left join userinfo c on a.userid=c.id
+        <include refid="Where_Clause"/>
+        <if test="page">
+            limit #{offset} ,#{pageSize}
+        </if>
+    </select>
+    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+        select count(*) nums from novelcomment a left join novelinfo b on a.novelid=b.id left join userinfo c on
+        a.userid=c.id
+        <include refid="Where_Clause"/>
+    </select>
+    <select id="queryNovelcommentById" parameterType="int" resultType="Novelcomment">
+		select * from novelcomment where id=${value}
+	</select>
+    <insert id="insertNovelcomment" useGeneratedKeys="true" keyProperty="id" parameterType="Novelcomment">
+		insert into novelcomment
+		(novelid,userid,contents,commenttime)
+		values
+		(#{novelid},#{userid},#{contents},#{commenttime});
+	</insert>
+    <update id="updateNovelcomment" parameterType="Novelcomment">
+		update novelcomment set
+		novelid=#{novelid},userid=#{userid},contents=#{contents},commenttime=#{commenttime}
+		where
+		id=#{id}	
+	</update>
+    <delete id="deleteNovelcomment" parameterType="int">
+	    delete from  novelcomment where id=${value}
+	</delete>
+</mapper>
+ 

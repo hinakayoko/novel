@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.NovelchapterMapper">
+    <resultMap type="Novelchapter" id="queryMap">
+        <id property="id" column="id"/>
+        <result property="novelid" column="novelid"/>
+        <result property="title" column="title"/>
+        <result property="contents" column="contents"/>
+        <result property="wordscount" column="wordscount"/>
+        <association property="novelinfoVO" javaType="Novelinfo">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="categoryid" column="categoryid"/>
+            <result property="author" column="author"/>
+            <result property="noveldesc" column="noveldesc"/>
+            <result property="updatetime" column="updatetime"/>
+            <result property="wordsnum" column="wordsnum"/>
+            <result property="viewcount" column="viewcount"/>
+            <result property="progress" column="progress"/>
+            <result property="favcount" column="favcount"/>
+            <result property="novelcover" column="novelcover"/>
+        </association>
+    </resultMap>
+    <sql id="Where_Clause">
+        <where>
+            <if test="id!=null and id!=0">
+                and a.id= #{id}
+            </if>
+            <if test="novelid!=null and novelid!=0">
+                and a.novelid= #{novelid}
+            </if>
+            <if test="title!=null and title!=''">
+                and a.title like concat('%',#{title},'%')
+            </if>
+        </where>
+    </sql>
+    <select id="query" parameterType="java.util.Map" resultMap="queryMap">
+        select
+        a.*,b.name,b.categoryid,b.author,b.noveldesc,b.updatetime,b.wordsnum,b.viewcount,b.progress,b.favcount,b.novelcover
+        from novelchapter a left join novelinfo b on a.novelid=b.id
+        <include refid="Where_Clause"/>
+
+        <if test="sorts==null or sorts==''">
+             order by a.id asc
+        </if>
+        <if test="sorts!=null and sorts!=''">
+            order by a.id ${sorts}
+        </if>
+
+        <if test="page">
+            limit #{offset} ,#{pageSize}
+        </if>
+    </select>
+    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+        select count(*) nums from novelchapter a left join novelinfo b on a.novelid=b.id
+        <include refid="Where_Clause"/>
+    </select>
+    <select id="queryNovelchapterById" parameterType="int" resultType="Novelchapter">
+		select * from novelchapter where id=${value}
+	</select>
+    <insert id="insertNovelchapter" useGeneratedKeys="true" keyProperty="id" parameterType="Novelchapter">
+		insert into novelchapter
+		(novelid,title,contents,wordscount)
+		values
+		(#{novelid},#{title},#{contents},#{wordscount});
+	</insert>
+    <update id="updateNovelchapter" parameterType="Novelchapter">
+		update novelchapter set
+		novelid=#{novelid},title=#{title},contents=#{contents},wordscount=#{wordscount}
+		where
+		id=#{id}	
+	</update>
+    <delete id="deleteNovelchapter" parameterType="int">
+	    delete from  novelchapter where id=${value}
+	</delete>
+    <delete id="deleteNovelchapterByNovelid" parameterType="int">
+	    delete from  novelchapter where novelid=${value}
+	</delete>
+
+</mapper>
+ 

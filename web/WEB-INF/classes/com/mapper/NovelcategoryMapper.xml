@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.NovelcategoryMapper">
+    <sql id="Where_Clause">
+        <where>
+            <if test="id!=null and id!=0">
+                and id= #{id}
+            </if>
+            <if test="name!=null and name!=''">
+                and name like concat('%',#{name},'%')
+            </if>
+        </where>
+    </sql>
+    <select id="query" parameterType="java.util.Map" resultType="Novelcategory">
+        select * from novelcategory
+        <include refid="Where_Clause"/>
+        <if test="page">
+            limit #{offset} ,#{pageSize}
+        </if>
+    </select>
+    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+        select count(0) from novelcategory
+        <include refid="Where_Clause"/>
+    </select>
+    <select id="queryNovelcategoryById" parameterType="int" resultType="Novelcategory">
+		select * from novelcategory where id=${value}
+	</select>
+    <insert id="insertNovelcategory" useGeneratedKeys="true" keyProperty="id" parameterType="Novelcategory">
+		insert into novelcategory
+		(name)
+		values
+		(#{name});
+	</insert>
+    <update id="updateNovelcategory" parameterType="Novelcategory">
+		update novelcategory set
+		name=#{name}
+		where
+		id=#{id}	
+	</update>
+    <delete id="deleteNovelcategory" parameterType="int">
+	    delete from  novelcategory where id=${value}
+	</delete>
+</mapper>
+ 

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.NovelinfoMapper">
+    <resultMap type="Novelinfo" id="queryMap">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="categoryid" column="categoryid"/>
+        <result property="author" column="author"/>
+        <result property="noveldesc" column="noveldesc"/>
+        <result property="updatetime" column="updatetime"/>
+        <result property="wordsnum" column="wordsnum"/>
+        <result property="viewcount" column="viewcount"/>
+        <result property="progress" column="progress"/>
+        <result property="favcount" column="favcount"/>
+        <result property="novelcover" column="novelcover"/>
+        <association property="novelcategoryVO" javaType="Novelcategory">
+            <id property="id" column="id"/>
+            <result property="name" column="b_name"/>
+        </association>
+    </resultMap>
+    <sql id="Where_Clause">
+        <where>
+            <if test="id!=null and id!=0">
+                and a.id= #{id}
+            </if>
+            <if test="name!=null and name!=''">
+                and a.name like concat('%',#{name},'%')
+            </if>
+            <if test="categoryid!=null and categoryid!=0">
+                and a.categoryid= #{categoryid}
+            </if>
+            <if test="author!=null and author!=''">
+                and a.author like concat('%',#{author},'%')
+            </if>
+            <if test="progress!=null and progress!=0">
+                and a.progress= #{progress}
+            </if>
+
+            <if test="keyword!=null and keyword!=''">
+                and  ( a.name like concat('%',#{keyword},'%')  or  a.author like  concat('%',#{keyword},'%'))
+            </if>
+
+        </where>
+    </sql>
+    <select id="query" parameterType="java.util.Map" resultMap="queryMap">
+        select a.*,b.name b_name from novelinfo a left join novelcategory b on a.categoryid=b.id
+        <include refid="Where_Clause"/>
+
+        <if test="sorts=='view'">
+            order by viewcount desc
+        </if>
+        <if test="sorts==null or sorts==''">
+            order by id desc
+        </if>
+        <if test="sorts=='fav'">
+            order by favcount desc
+        </if>
+        <if test="sorts=='utime'">
+            order by updatetime desc
+        </if>
+
+        <if test="page">
+            limit #{offset} ,#{pageSize}
+        </if>
+    </select>
+    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+        select count(*) nums from novelinfo a left join novelcategory b on a.categoryid=b.id
+        <include refid="Where_Clause"/>
+    </select>
+    <select id="queryNovelinfoById" parameterType="int" resultType="Novelinfo">
+		select * from novelinfo where id=${value}
+	</select>
+    <insert id="insertNovelinfo" useGeneratedKeys="true" keyProperty="id" parameterType="Novelinfo">
+		insert into novelinfo
+		(name,categoryid,author,noveldesc,updatetime,wordsnum,viewcount,progress,favcount,novelcover)
+		values
+		(#{name},#{categoryid},#{author},#{noveldesc},#{updatetime},#{wordsnum},#{viewcount},#{progress},#{favcount},#{novelcover});
+	</insert>
+    <update id="updateNovelinfo" parameterType="Novelinfo">
+		update novelinfo set
+		name=#{name},categoryid=#{categoryid},author=#{author},noveldesc=#{noveldesc},updatetime=#{updatetime},wordsnum=#{wordsnum},viewcount=#{viewcount},progress=#{progress},favcount=#{favcount},novelcover=#{novelcover}
+		where
+		id=#{id}	
+	</update>
+    <delete id="deleteNovelinfo" parameterType="int">
+	    delete from  novelinfo where id=${value}
+	</delete>
+
+
+</mapper>
+ 

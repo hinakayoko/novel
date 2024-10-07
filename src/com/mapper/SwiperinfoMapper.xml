@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.SwiperinfoMapper">
+    <resultMap type="Swiperinfo" id="queryMap">
+        <id property="id" column="id"/>
+        <result property="pic" column="pic"/>
+        <result property="novelid" column="novelid"/>
+        <association property="novelinfoVO" javaType="Novelinfo">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="categoryid" column="categoryid"/>
+            <result property="author" column="author"/>
+            <result property="noveldesc" column="noveldesc"/>
+            <result property="updatetime" column="updatetime"/>
+            <result property="wordsnum" column="wordsnum"/>
+            <result property="viewcount" column="viewcount"/>
+            <result property="progress" column="progress"/>
+            <result property="favcount" column="favcount"/>
+            <result property="novelcover" column="novelcover"/>
+        </association>
+    </resultMap>
+    <sql id="Where_Clause">
+        <where>
+            <if test="id!=null and id!=0">
+                and a.id= #{id}
+            </if>
+        </where>
+    </sql>
+    <select id="query" parameterType="java.util.Map" resultMap="queryMap">
+        select
+        a.*,b.name,b.categoryid,b.author,b.noveldesc,b.updatetime,b.wordsnum,b.viewcount,b.progress,b.favcount,b.novelcover
+        from swiperinfo a left join novelinfo b on a.novelid=b.id
+        <include refid="Where_Clause"/>
+        <if test="page">
+            limit #{offset} ,#{pageSize}
+        </if>
+    </select>
+    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+        select count(*) nums from swiperinfo a left join novelinfo b on a.novelid=b.id
+        <include refid="Where_Clause"/>
+    </select>
+    <select id="querySwiperinfoById" parameterType="int" resultType="Swiperinfo">
+		select * from swiperinfo where id=${value}
+	</select>
+    <insert id="insertSwiperinfo" useGeneratedKeys="true" keyProperty="id" parameterType="Swiperinfo">
+		insert into swiperinfo
+		(pic,novelid)
+		values
+		(#{pic},#{novelid});
+	</insert>
+    <update id="updateSwiperinfo" parameterType="Swiperinfo">
+		update swiperinfo set
+		pic=#{pic},novelid=#{novelid}
+		where
+		id=#{id}	
+	</update>
+    <delete id="deleteSwiperinfo" parameterType="int">
+	    delete from  swiperinfo where id=${value}
+	</delete>
+</mapper>
+ 
